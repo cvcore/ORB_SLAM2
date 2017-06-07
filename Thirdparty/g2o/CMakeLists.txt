@@ -42,6 +42,13 @@ IF(UNIX)
   MESSAGE(STATUS "Compiling on Unix")
 ENDIF(UNIX)
 
+IF(APPLE)
+  #SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+  #SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+  ADD_DEFINITIONS(-DMACOS)
+ENDIF(APPLE)
+
+
 # Eigen library parallelise itself, though, presumably due to performance issues
 # OPENMP is experimental. We experienced some slowdown with it
 FIND_PACKAGE(OpenMP)
